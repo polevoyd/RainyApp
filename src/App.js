@@ -9,9 +9,24 @@ import { config } from './config.js';
 
 class App extends React.Component {
 
-  getWeather = async() => {
-    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=london,uk&appid=${config.weather_api_key}`)
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: undefined
+    }
+  }
+
+  getWeather = async(event) => {
+
+    event.preventDefault();
+    const city = event.target.elements.city.value;
+    const country = event.target.elements.country.value;
+    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${config.weather_api_key}`)
     const response = await apiCall.json();
 
     console.log(response);
