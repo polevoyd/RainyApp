@@ -7,6 +7,11 @@ import './App.css';
 import './config.js';
 import { config } from './config.js';
 
+// App should not provide a choice of city
+// instead - it shows a current city by geolocation and 
+// instead of raw data showing colorful animation
+// where colors depends on a current time and a weather 
+
 class App extends React.Component {
 
   constructor(props) {
@@ -31,7 +36,7 @@ class App extends React.Component {
     const response = await apiCall.json();
 
     if (city && country){
-      
+
       this.setState({
         temperature: response.main.temp,
         city: response.name,
