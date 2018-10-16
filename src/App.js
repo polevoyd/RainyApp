@@ -14,6 +14,7 @@ class App extends React.Component {
       <div>
         <Titles />
         <Form />
+        <Weather />
       </div>
     );
   }
